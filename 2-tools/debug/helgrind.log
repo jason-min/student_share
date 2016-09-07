@@ -1,0 +1,72 @@
+==12272== Helgrind, a thread error detector
+==12272== Copyright (C) 2007-2011, and GNU GPL'd, by OpenWorks LLP et al.
+==12272== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+==12272== Command: ./thread1
+==12272== Parent PID: 12271
+==12272== 
+==12272== ---Thread-Announcement------------------------------------------
+==12272== 
+==12272== Thread #1 is the program's root thread
+==12272== 
+==12272== ---Thread-Announcement------------------------------------------
+==12272== 
+==12272== Thread #2 was created
+==12272==    at 0x4153E78: clone (clone.S:111)
+==12272== 
+==12272== ----------------------------------------------------------------
+==12272== 
+==12272== Possible data race during write of size 4 at 0x804A054 by thread #1
+==12272== Locks held: none
+==12272==    at 0x80486C7: main (thread1.c:49)
+==12272== 
+==12272== This conflicts with a previous read of size 4 by thread #2
+==12272== Locks held: none
+==12272==    at 0x80485ED: f (thread1.c:17)
+==12272==    by 0x402DD35: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==12272==    by 0x4050D4B: start_thread (pthread_create.c:308)
+==12272==    by 0x4153E8D: clone (clone.S:130)
+==12272== 
+==12272== ----------------------------------------------------------------
+==12272== 
+==12272== Possible data race during write of size 4 at 0x804A058 by thread #1
+==12272== Locks held: none
+==12272==    at 0x80486D0: main (thread1.c:50)
+==12272== 
+==12272== This conflicts with a previous read of size 4 by thread #2
+==12272== Locks held: none
+==12272==    at 0x80485F3: f (thread1.c:17)
+==12272==    by 0x402DD35: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==12272==    by 0x4050D4B: start_thread (pthread_create.c:308)
+==12272==    by 0x4153E8D: clone (clone.S:130)
+==12272== 
+==12272== ----------------------------------------------------------------
+==12272== 
+==12272== Possible data race during read of size 4 at 0x804A054 by thread #2
+==12272== Locks held: none
+==12272==    at 0x80485ED: f (thread1.c:17)
+==12272==    by 0x402DD35: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==12272==    by 0x4050D4B: start_thread (pthread_create.c:308)
+==12272==    by 0x4153E8D: clone (clone.S:130)
+==12272== 
+==12272== This conflicts with a previous write of size 4 by thread #1
+==12272== Locks held: none
+==12272==    at 0x80486C7: main (thread1.c:49)
+==12272== 
+==12272== ----------------------------------------------------------------
+==12272== 
+==12272== Possible data race during read of size 4 at 0x804A058 by thread #2
+==12272== Locks held: none
+==12272==    at 0x80485F3: f (thread1.c:17)
+==12272==    by 0x402DD35: ??? (in /usr/lib/valgrind/vgpreload_helgrind-x86-linux.so)
+==12272==    by 0x4050D4B: start_thread (pthread_create.c:308)
+==12272==    by 0x4153E8D: clone (clone.S:130)
+==12272== 
+==12272== This conflicts with a previous write of size 4 by thread #1
+==12272== Locks held: none
+==12272==    at 0x80486D0: main (thread1.c:50)
+==12272== 
+==12272== 
+==12272== For counts of detected and suppressed errors, rerun with: -v
+==12272== Use --history-level=approx or =none to gain increased speed, at
+==12272== the cost of reduced accuracy of conflicting-access information
+==12272== ERROR SUMMARY: 506 errors from 4 contexts (suppressed: 0 from 0)
